@@ -63,8 +63,7 @@ pipeline {
                     } else if (buildType == 'boss') {
                         sh "\\rm -rf /usr/dianchou/tomcat/${projectName}/WEB-INF"
                         sh "\\cp -rf /var/lib/jenkins/workspace/${env.JOB_NAME}/target/${projectName}/* /usr/dianchou/tomcat/${projectName}"
-                        sh "/usr/java/tomcat/${projectName}/bin/shutdown.sh"
-                        sh "/usr/java/tomcat/${projectName}/bin/startup.sh"
+                        sh "/usr/java/tomcat/${projectName}/bin/dianchou_service.sh"
                     }
                 }
             }
