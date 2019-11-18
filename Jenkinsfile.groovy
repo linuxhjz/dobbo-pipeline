@@ -36,7 +36,7 @@ pipeline {
                     }
                     shortName = projectName.replaceAll('dianchou-', '')
                 }
-                git branch: "${branch_name}", credentialsId: 'git', url: "git@gitlab.tdianchou.com:4422/chenchao/${projectName}.git"
+                git branch: "${branch_name}", credentialsId: 'git', url: "ssh://git@gitlab.tdianchou.com:4422/chenchao/${projectName}.git"
             }
         }
         stage('Package') {

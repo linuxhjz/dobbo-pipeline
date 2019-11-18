@@ -62,7 +62,7 @@ pipeline {
                         project = projects[i]
                         sh "mkdir -p ${project}"
                         dir(project) {
-                            git branch: "${branch_name}", changelog: false, credentialsId: 'git', url: "git@gitlab.tdianchou.com:4422/chenchao/${project}.git"
+                            git branch: "${branch_name}", changelog: false, credentialsId: 'git', url: "ssh://git@gitlab.tdianchou.com:4422/chenchao/${project}.git"
                         }
                     }
                 }
