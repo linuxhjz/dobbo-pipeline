@@ -19,7 +19,7 @@ pipeline {
                     if (branch_name == "test_83") {
                         mvn_profile = "test83"
                     } else if (branch_name == "test_206") {
-                        mvn_profile = "test"
+                        mvn_profile = "test206"
                     } else if (branch_name == "zsc") {
                         mvn_profile = "zsc"
                     } else if (branch_name == "master") {
