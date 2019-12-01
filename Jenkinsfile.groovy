@@ -45,6 +45,7 @@ pipeline {
                     if (buildType == 'common') {
                         sh "mvn clean install -f dianchou-common-package -P ${mvn_profile}"
                     } else if (buildType == 'service') {
+                        sh "mvn clean install -f dianchou-${shortName}-facade -P ${mvn_profile}"
                         sh "mvn clean package -f dianchou-service-${shortName}"
                     } else if (buildType == 'boss') {
                         sh "mvn clean package"
