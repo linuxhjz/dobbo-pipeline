@@ -35,8 +35,13 @@ pipeline {
                         buildType = 'service'
                     }
                     shortName = projectName.replaceAll('dianchou-', '')
+                    // 克隆仓库
+                    if (projectName.contains('prison')) {
+                        git branch: "${branch_name}", credentialsId: 'git', url: "ssh://git@gitlab.tdianchou.com:4422/others/${projectName}.git"
+                    } else {
+                        git branch: "${branch_name}", credentialsId: 'git', url: "ssh://git@gitlab.tdianchou.com:4422/chenchao/${projectName}.git"
+                    }
                 }
-                git branch: "${branch_name}", credentialsId: 'git', url: "ssh://git@gitlab.tdianchou.com:4422/chenchao/${projectName}.git"
             }
         }
         stage('Package') {
@@ -45,7 +50,7 @@ pipeline {
                     if (buildType == 'common') {
                         sh "mvn clean install -f dianchou-common-package -P ${mvn_profile}"
                     } else if (buildType == 'service') {
-                        sh "mvn clean install -f dianchou-${shortName}-facade -P ${mvn_profile}"
+                        sh "mvn clean install -f dianchou-facade-${shortName} -P ${mvn_profile}"
                         sh "mvn clean package -f dianchou-service-${shortName}"
                     } else if (buildType == 'boss') {
                         sh "mvn clean package"
