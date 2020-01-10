@@ -56,7 +56,8 @@ pipeline {
                             'dianchou-dianChouBox',
                             'dianchou-productFarmer',
                             'dianchou-productProject',
-                            'dianchou-productPublic'
+                            'dianchou-productPublic',
+                            'dianchou-wechat',
                     ]
                     for (int i = 0; i < projects.size(); ++i) {
                         project = projects[i]
